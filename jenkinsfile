@@ -22,7 +22,7 @@ pipeline{
                 bat "docker run -e BROWSER=chrome -e HUB_HOST=192.168.56.1 -e TEST_SUITE=testng.xml  vardhanreddy071094/selenium:latest"
             }
         
-
+}
     }
 
     post {
