@@ -1,0 +1,34 @@
+pipeline{
+
+    agent any
+
+    stages{
+
+        stage('Build Jar'){
+            steps{
+                bat 'mvn clean package -DskipTests'
+            }
+        }
+
+        stage('Build Image'){
+            steps{
+                bat 'docker build -t=vardhanreddy071094/selenium:latest .'
+            }
+        }
+
+        stage('Run Image'){
+           
+            steps{
+                bat "docker run -e BROWSER=chrome -e HUB_HOST=192.168.56.1 -e TEST_SUITE=testng.xml  vardhanreddy071094/selenium:latest"
+            }
+        
+
+    }
+
+    post {
+        always {
+           echo 'Clean up'
+        }
+    }
+
+}
