@@ -4,7 +4,10 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import util.Config;
 import util.Constants;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Capabilities;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -16,9 +19,12 @@ import org.testng.ITestContext;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
+
+import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Date;
 
 
 public abstract class AbstractTest {
@@ -55,6 +61,16 @@ public abstract class AbstractTest {
         WebDriverManager.chromedriver().setup();
         return new ChromeDriver();
     }
+    
+public  void takeScreenShot() throws IOException {
+		
+		Date currentDate=new Date();
+		String screenshotName=currentDate.toString().replace("", "-").replace(":", "-");
+		File SrcFile =(File) (((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE));
+        File DestFile=new File(".//screenshot//"+screenshotName+".png"); 
+  		FileUtils.copyFile(SrcFile, DestFile);
+		
+	}
 
     @AfterTest
     public void quitDriver(){

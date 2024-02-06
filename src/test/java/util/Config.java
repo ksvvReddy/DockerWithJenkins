@@ -1,13 +1,19 @@
 package util;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Date;
 import java.util.Properties;
 
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+
 public class Config {
-	private static final String DEFAULT_PROPERTIES = "config/default.properties";
+	private static final String DEFAULT_PROPERTIES = "resources/config/default.properties";
 	private static Properties properties;
 
 	public static void initialize() throws IOException {

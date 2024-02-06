@@ -1,5 +1,6 @@
 package tests;
 
+import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
@@ -12,6 +13,7 @@ public class sample extends AbstractTest{
 	public void cricbuzz() throws InterruptedException {		
 		driver.get(Config.get(Constants.CRICBUZZ_URL));
 		Thread.sleep(2000);
+		Assert.assertTrue(false);
 		System.out.println(Config.get(Constants.VARIABLE)+ driver.getTitle() +Thread.currentThread().getId());
 	}
 	
