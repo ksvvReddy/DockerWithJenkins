@@ -87,7 +87,7 @@
 						<selenium.grid.enabled>true</selenium.grid.enabled>
 					</systemPropertyVariables>
 					<suiteXmlFiles>
-						<file>testng.xml</file>
+						<file>.\resources\test-suites\testng.xml</file>
 					</suiteXmlFiles>
 					<threadCount>4</threadCount>
 					<reportsDirectory>target/test-output</reportsDirectory>
